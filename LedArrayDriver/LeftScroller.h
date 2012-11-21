@@ -16,7 +16,7 @@
 
 class LeftScroller : public Animation {
 	public:
-		LeftScroller(LedArrayDriver &ledArray, Message &message, long repeats);
+		LeftScroller(LedArrayDriver &ledArray, Message &message, long repeats, unsigned char *displayBuffer);
 		~LeftScroller();
 
 		virtual void init();

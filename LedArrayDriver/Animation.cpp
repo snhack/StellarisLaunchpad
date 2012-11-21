@@ -7,19 +7,24 @@
 
 #include "Animation.h"
 
-Animation::Animation(LedArrayDriver &ledArray, long repeats)
+Animation::Animation(LedArrayDriver &ledArray, long repeats, unsigned char *displayBuffer)
 	:	_ledArray(ledArray),
 		_displayIndex(0),
 		_repeats(repeats),
-		_repeatCount(0) {
+		_repeatCount(0),
+		_displayBuffer(displayBuffer) {
+}
+
+Animation::~Animation() {
+
+}
+
+void Animation::init() {
 	//
 	// Clear the buffer
 	//
 	for(int i = 0;i < BUFFERSIZE;i++) {
 		_displayBuffer[i] = 0;
 	}
-}
-
-Animation::~Animation() {
 
 }

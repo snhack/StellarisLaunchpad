@@ -15,12 +15,12 @@
 
 class Animation {
 	public:
-		Animation(LedArrayDriver &ledArray, long repeats);
+		Animation(LedArrayDriver &ledArray, long repeats, unsigned char *displayBuffer);
 		~Animation();
-		virtual void init() = 0;
+		virtual void init();
 		virtual long animate() = 0;
 	protected:
-		unsigned char _displayBuffer[BUFFERSIZE];
+		unsigned char *_displayBuffer;
 		LedArrayDriver &_ledArray;
 		long _displayIndex;
 		long _repeats;

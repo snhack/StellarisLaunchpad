@@ -15,7 +15,7 @@
 
 class StaticDisplay : public Animation {
 	public:
-	StaticDisplay(LedArrayDriver &ledArray, Message &message, long repeats);
+	StaticDisplay(LedArrayDriver &ledArray, Message &message, long repeats, unsigned char *displayBuffer);
 	~StaticDisplay();
 
 	virtual void init();

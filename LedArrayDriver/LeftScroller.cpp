@@ -7,9 +7,8 @@
 
 #include "LeftScroller.h"
 
-LeftScroller::LeftScroller(LedArrayDriver &ledArray, Message &message, long repeats)
-	:Animation(ledArray, repeats), _message(message) {
-	init();
+LeftScroller::LeftScroller(LedArrayDriver &ledArray, Message &message, long repeats, unsigned char *displayBuffer)
+	:Animation(ledArray, repeats, displayBuffer), _message(message) {
 }
 
 LeftScroller::~LeftScroller() {
@@ -17,6 +16,7 @@ LeftScroller::~LeftScroller() {
 }
 
 void LeftScroller::init() {
+	Animation::init();
 	_message.buffer(_displayBuffer);
 	_prefixLen = _ledArray.numberOfColumns() - 1;
 	_prefix = _prefixLen;

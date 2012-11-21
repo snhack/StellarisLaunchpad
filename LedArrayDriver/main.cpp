@@ -5,6 +5,7 @@
 *  Author: tony walmsley
 */
 #include "inc/hw_types.h"
+#include "Animation.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/gpio.h"
 #include "inc/hw_memmap.h"
@@ -23,6 +24,7 @@
 #define NBR_OF_DISPLAY_COLUMNS  80
 #define NBR_OF_DISPLAY_ROWS		7
 
+unsigned char displayBuffer[BUFFERSIZE];
 //
 // Fix a compile error - see http://stackoverflow.com/questions/920500/what-is-the-purpose-of-cxa-pure-virtual for details.
 //
@@ -67,29 +69,29 @@ int main(void) {
 	AnimatedGraphic invader(animInvader, 11, 4);// columns * frames
 
 
-	LeftScroller scrollLeft1(led, invader, 2);
-	LeftScroller scrollLeft2(led, welcome, 1);
-	LeftScroller scrollLeft3(led, exhib1, 1);
-	LeftScroller scrollLeft4(led, multiInvader, 1);
-	LeftScroller scrollLeft5(led, retroGaming, 1);
-	LeftScroller scrollLeft6(led, pacman, 1);
-	LeftScroller scrollLeft7(led, compClub, 1);
-	LeftScroller scrollLeft8(led, schoolVisit, 1);
-	LeftScroller scrollLeft9(led, website, 1);
-	LeftScroller scrollLeft10(led, shop, 1);
-	LeftScroller scrollLeft11(led, hackspace, 1);
+	LeftScroller scrollLeft1(led, invader, 2, displayBuffer);
+	LeftScroller scrollLeft2(led, welcome, 1, displayBuffer);
+	LeftScroller scrollLeft3(led, exhib1, 1, displayBuffer);
+	LeftScroller scrollLeft4(led, multiInvader, 1, displayBuffer);
+	LeftScroller scrollLeft5(led, retroGaming, 1, displayBuffer);
+	LeftScroller scrollLeft6(led, pacman, 1, displayBuffer);
+	LeftScroller scrollLeft7(led, compClub, 1, displayBuffer);
+	LeftScroller scrollLeft8(led, schoolVisit, 1, displayBuffer);
+	LeftScroller scrollLeft9(led, website, 1, displayBuffer);
+	LeftScroller scrollLeft10(led, shop, 1, displayBuffer);
+	LeftScroller scrollLeft11(led, hackspace, 1, displayBuffer);
 	do
 	{
-		while(scrollLeft1.animate());
-		while(scrollLeft2.animate());
-		while(scrollLeft3.animate());
-		while(scrollLeft4.animate());
-		while(scrollLeft5.animate());
-		while(scrollLeft6.animate());
-		while(scrollLeft7.animate());
-		while(scrollLeft8.animate());
-		while(scrollLeft9.animate());
-		while(scrollLeft10.animate());
-		while(scrollLeft11.animate());
+		scrollLeft1.init();  while(scrollLeft1.animate());
+		scrollLeft2.init();  while(scrollLeft2.animate());
+		scrollLeft3.init();  while(scrollLeft3.animate());
+		scrollLeft4.init();  while(scrollLeft4.animate());
+		scrollLeft5.init();  while(scrollLeft5.animate());
+		scrollLeft6.init();  while(scrollLeft6.animate());
+		scrollLeft7.init();  while(scrollLeft7.animate());
+		scrollLeft8.init();  while(scrollLeft8.animate());
+		scrollLeft9.init();  while(scrollLeft9.animate());
+		scrollLeft10.init(); while(scrollLeft10.animate());
+		scrollLeft11.init(); while(scrollLeft11.animate());
 	} while(1);
 }
